@@ -78,3 +78,5 @@ To use the VirusTotal API, you need an API key. Follow these steps to get your A
 - [PyFiglet](https://github.com/pwaller/pyfiglet) for the ASCII art.
 
 ---
+
+### Note that this is under development, so use it at your own risk. lol
