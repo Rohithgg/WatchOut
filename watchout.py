@@ -19,13 +19,14 @@ def error():
     print("\n")
 
 def api_key():
-    api_key = "01981a7334d54e3ab50bec8b10831aad7f144785f408b4d85ba9e2c9d425e050" # this is my own api key for testing
-    #api_key = input("Enter your API key: ") # uncomment this line to get user input
+    api_key = input("Enter your API key: ") # uncomment this line to get user input
     if not api_key:
         print("API key is required")
         print("To get your API key, sign up at https://www.virustotal.com. \n its free")
         print("And visit https://www.virustotal.com/gui/user/your_api_key")
         exit()
+    else:
+        print("API key is set")
     client = vt.Client(api_key)
     return client
 
@@ -42,12 +43,12 @@ def helpfun():
 
 
 def get_file_report(file_hash):
-    client = "01981a7334d54e3ab50bec8b10831aad7f144785f408b4d85ba9e2c9d425e050" # this is my own api key for testing
+    client = api_key()
     file = client.get_object(f"/files/{file_hash}") #example "/files/44d88612fea8a8f36de82e1278abb02f"
     return file.last_analysis_stats
 
 
-def detect_malware_in_link(url, api_key = "01981a7334d54e3ab50bec8b10831aad7f144785f408b4d85ba9e2c9d425e050"):
+def detect_malware_in_link(url, api_key = api_key()):
     # VirusTotal API endpoint
     api_endpoint = "https://www.virustotal.com/api/v3/urls"
 
@@ -76,7 +77,7 @@ def detect_malware_in_link(url, api_key = "01981a7334d54e3ab50bec8b10831aad7f144
         # Extract scan results
         stats = result_data["data"]["attributes"]["stats"]
 
-        data = {
+        return {
             "malicious": stats["malicious"],
             "suspicious": stats["suspicious"],
             "undetected": stats["undetected"],
@@ -108,6 +109,8 @@ def detect_summary(data):
 def main():
     banner()
     f, u, k = parse_args()
+    if k:
+        api_key()
     if f!=False or u!=False:
         if f:
             #hashval = calculate_hash(f)
