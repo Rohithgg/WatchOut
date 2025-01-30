@@ -20,18 +20,17 @@ WatchOut is a command-line interface (CLI) tool for linux that detects malware i
 
 ## Installation
 
-1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/watchout.git
+    git clone https://github.com/Rohithgg/watchout.git
     cd watchout
     ```
 
-2. Install the required Python packages:
+1. Install the required Python packages:
     ```sh
     pip install -r requirements.txt
     ```
 
-3. Make the `watchout.py` script executable and install it:
+2. Make the `watchout.py` script executable and install it:
     ```sh
     chmod +x watchout.py
     sudo ./watchinstall.sh
