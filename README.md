@@ -19,7 +19,7 @@ WatchOut is a command-line interface (CLI) tool for linux that detects malware i
 - `vt`
 
 ## Installation
-
+1. clone this repo:
     ```sh
     git clone https://github.com/Rohithgg/watchout.git
     cd watchout
